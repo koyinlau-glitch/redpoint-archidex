@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProLight.otf') format('opentype'); font-weight:300; font-display:swap; }
+  @font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProBook.otf') format('opentype'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProMedium.otf') format('opentype'); font-weight:500; font-display:swap; }
+  @font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProHeavy.otf') format('opentype'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProBlack.otf') format('opentype'); font-weight:900; font-display:swap; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#080809; }
+  @keyframes rpFadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+  @keyframes rpKen { from { transform:scale(1.0); } to { transform:scale(1.08); } }
+  @keyframes rpBlink { 0%,100% { opacity:1; } 50% { opacity:0.35; } }
+  @keyframes rpArrow { 0%,100% { transform:translateX(0); } 50% { transform:translateX(8px); } }
+</style>
+</helmet>
+
+<div style="width:1920px; height:1080px; position:relative; overflow:hidden; background:#0B0B0C; font-family:'Avenir LT Pro',sans-serif; color:#fff; -webkit-font-smoothing:antialiased;">
+
+  <!-- ============ APP SHELL ============ -->
+  <div style="display:flex; width:100%; height:100%;">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside style="width:340px; height:100%; flex:none; background:#0E0E10; border-right:1px solid rgba(255,255,255,0.10); display:flex; flex-direction:column; padding:44px 0 36px;">
+      <div style="padding:0 36px;">
+        <img src="assets/logo-redpoint-red-trim.png" alt="Red Point" style="height:42px; width:auto; display:block;">
+        <div style="margin-top:18px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; line-height:1.7; color:rgba(255,255,255,0.5); text-transform:uppercase;">Signage &amp; Facade<br>LED Display Solutions</div>
+      </div>
+
+      <nav style="margin-top:54px; display:flex; flex-direction:column;">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
+          <button onClick="{{ item.onClick }}" style="{{ item.style }}">
+            <span style="{{ item.numStyle }}">{{ item.num }}</span>
+            <span style="{{ item.labelStyle }}">{{ item.label }}</span>
+          </button>
+        </sc-for>
+      </nav>
+
+      <div style="margin-top:auto; padding:0 36px;">
+        <div style="border:1px solid rgba(255,255,255,0.12); padding:20px 22px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:#DE2027; text-transform:uppercase;">Find us at</div>
+          <div style="margin-top:10px; font-weight:900; font-size:30px; letter-spacing:-0.01em; line-height:1;">ARCHIDEX<br>2026</div>
+          <div style="margin-top:14px; display:flex; align-items:baseline; gap:8px;">
+            <span style="width:8px; height:8px; border-radius:50%; background:#DE2027; display:inline-block;"></span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:rgba(255,255,255,0.92); letter-spacing:0.04em;">BOOTH 3G247A</span>
+          </div>
+          <div style="margin-top:8px; font-size:12px; color:rgba(255,255,255,0.5); line-height:1.6;">MITEC, Kuala Lumpur<br>29 Jul – 1 Aug 2026</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===== CONTENT ===== -->
+    <main style="flex:1; height:100%; position:relative; overflow:hidden;">
+
+      <!-- HOME -->
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+        <section style="position:absolute; inset:0; display:flex;">
+          <div style="flex:1; padding:96px 64px 64px; display:flex; flex-direction:column;">
+            <div style="display:inline-flex; align-items:center; gap:10px;">
+              <span style="width:9px; height:9px; border-radius:50%; background:#DE2027;"></span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Making brands seen · since 1983</span>
+            </div>
+            <h1 style="margin-top:40px; font-weight:900; font-size:104px; line-height:0.94; letter-spacing:-0.03em;">Making<br>brands<br>seen<span style="color:#DE2027;">.</span></h1>
+            <p style="margin-top:36px; max-width:560px; font-weight:300; font-size:22px; line-height:1.6; color:rgba(255,255,255,0.72);">Brand impressions through signage, facade and LED display solutions. For 40+ years Red Point has helped brands show up at the scale they're built for — designed, fabricated and installed under one roof.</p>
+            <div style="margin-top:auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.10);">
+              <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+                <div style="background:#0B0B0C; padding:26px 22px;">
+                  <div style="font-weight:900; font-size:48px; line-height:1; letter-spacing:-0.02em; font-variant-numeric:tabular-nums;">{{ s.num }}</div>
+                  <div style="margin-top:10px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); line-height:1.5;">{{ s.label }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="width:560px; flex:none; position:relative; overflow:hidden; border-left:1px solid rgba(255,255,255,0.10);">
+            <img src="assets/redpoint-flagship-night.png" alt="Illuminated facade at night" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+            <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(11,11,12,0.30),rgba(11,11,12,0.05) 40%,rgba(11,11,12,0.55));"></div>
+            <div style="position:absolute; left:32px; bottom:32px; right:32px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; color:rgba(255,255,255,0.85); text-transform:uppercase;">Facade lighting · switch-on</div>
+              <div style="margin-top:6px; font-size:15px; color:rgba(255,255,255,0.6);">Architectural illumination, delivered end to end.</div>
+            </div>
+          </div>
+        </section>
+      </sc-if>
+
+      <!-- SERVICES -->
+      <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+        <section style="position:absolute; inset:0; padding:96px 64px 64px; display:flex; flex-direction:column;">
+          <div style="display:inline-flex; align-items:center; gap:10px;">
+            <span style="width:9px; height:9px; border-radius:50%; background:#DE2027;"></span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.6);">What we do</span>
+          </div>
+          <div style="margin-top:28px; display:flex; gap:12px;">
+            <sc-for list="{{ serviceTabs }}" as="t" hint-placeholder-count="3">
+              <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin-top:40px; flex:1; display:flex; gap:56px; min-height:0;">
+            <div style="flex:1; display:flex; flex-direction:column;">
+              <h2 style="font-weight:900; font-size:58px; line-height:0.98; letter-spacing:-0.025em;">{{ svc.title }}</h2>
+              <p style="margin-top:24px; max-width:620px; font-weight:300; font-size:21px; line-height:1.6; color:rgba(255,255,255,0.72);">{{ svc.lead }}</p>
+              <ul style="margin-top:36px; list-style:none; border-top:1px solid rgba(255,255,255,0.12);">
+                <sc-for list="{{ svc.bullets }}" as="b" hint-placeholder-count="6">
+                  <li style="display:flex; align-items:flex-start; gap:16px; padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.12); font-size:18px; color:rgba(255,255,255,0.85);">
+                    <span style="color:#DE2027; font-weight:700; line-height:1.5;">→</span>
+                    <span>{{ b }}</span>
+                  </li>
+                </sc-for>
+              </ul>
+            </div>
+            <div style="width:520px; flex:none; position:relative; overflow:hidden;">
+              <img src="{{ svc.img }}" alt="{{ svc.title }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(11,11,12,0.15),rgba(11,11,12,0.5));"></div>
+              <div style="position:absolute; left:26px; bottom:24px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.85);">{{ svc.tag }}</div>
+            </div>
+          </div>
+        </section>
+      </sc-if>
+
+      <!-- PROJECTS -->
+      <sc-if value="{{ isProjects }}" hint-placeholder-val="{{ false }}">
+        <section style="position:absolute; inset:0; padding:96px 64px 56px; display:flex; flex-direction:column;">
+          <div style="display:flex; align-items:flex-end; justify-content:space-between;">
+            <div>
+              <div style="display:inline-flex; align-items:center; gap:10px;">
+                <span style="width:9px; height:9px; border-radius:50%; background:#DE2027;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Selected work</span>
+              </div>
+              <h2 style="margin-top:18px; font-weight:900; font-size:52px; line-height:1; letter-spacing:-0.025em;">Proven at scale.</h2>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <sc-for list="{{ filterTabs }}" as="t" hint-placeholder-count="5">
+                <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="margin-top:36px; flex:1; display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:1fr; gap:1px; background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.10); min-height:0;">
+            <sc-for list="{{ filteredProjects }}" as="p" hint-placeholder-count="6">
+              <div style="background:#0B0B0C; display:flex; flex-direction:column; border-top:2px solid transparent;">
+                <div style="height:150px; flex:none; position:relative; overflow:hidden;">
+                  <img src="{{ p.img }}" alt="{{ p.name }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+                  <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(11,11,12,0.05),rgba(11,11,12,0.55));"></div>
+                </div>
+                <div style="padding:22px 26px 28px; display:flex; flex-direction:column; flex:1;">
+                  <div style="display:flex; align-items:center; justify-content:space-between;">
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.12em; color:#DE2027;">{{ p.code }}</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.4);">{{ p.tag }}</span>
+                  </div>
+                  <h3 style="margin-top:16px; font-weight:700; font-size:22px; line-height:1.1; letter-spacing:-0.01em;">{{ p.name }}</h3>
+                  <p style="margin-top:10px; font-weight:300; font-size:14px; line-height:1.5; color:rgba(255,255,255,0.6);">{{ p.detail }}</p>
+                  <div style="margin-top:auto; padding-top:16px; display:flex; align-items:center; gap:10px; border-top:1px solid rgba(255,255,255,0.10);">
+                    <span style="color:#DE2027;">→</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:rgba(255,255,255,0.85); letter-spacing:0.02em;">{{ p.spec }}</span>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+
+      <!-- WHY -->
+      <sc-if value="{{ isWhy }}" hint-placeholder-val="{{ false }}">
+        <section style="position:absolute; inset:0; padding:96px 64px 64px; display:flex; flex-direction:column;">
+          <div style="display:inline-flex; align-items:center; gap:10px;">
+            <span style="width:9px; height:9px; border-radius:50%; background:#DE2027;"></span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Why Red Point</span>
+          </div>
+          <h2 style="margin-top:18px; font-weight:900; font-size:52px; line-height:1; letter-spacing:-0.025em;">One partner. One accountability.</h2>
+          <div style="margin-top:48px; flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:1px; background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.10); min-height:0;">
+            <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+              <div style="background:#0B0B0C; padding:38px 44px; display:flex; gap:28px; align-items:flex-start;">
+                <div style="font-weight:900; font-size:64px; line-height:0.9; color:#DE2027; flex:none; font-variant-numeric:tabular-nums;">{{ p.num }}</div>
+                <div>
+                  <h3 style="font-weight:700; font-size:26px; line-height:1.15; letter-spacing:-0.01em;">{{ p.title }}</h3>
+                  <p style="margin-top:14px; font-weight:300; font-size:17px; line-height:1.6; color:rgba(255,255,255,0.62);">{{ p.body }}</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+
+      <!-- ENQUIRE -->
+      <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+        <section style="position:absolute; inset:0; display:flex;">
+          <div style="flex:1; padding:96px 64px 64px; display:flex; flex-direction:column;">
+            <div style="display:inline-flex; align-items:center; gap:10px;">
+              <span style="width:9px; height:9px; border-radius:50%; background:#DE2027;"></span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Let's talk</span>
+            </div>
+            <h2 style="margin-top:22px; font-weight:900; font-size:60px; line-height:0.98; letter-spacing:-0.03em;">Brief us on your<br>next rollout.</h2>
+            <p style="margin-top:24px; max-width:520px; font-weight:300; font-size:20px; line-height:1.6; color:rgba(255,255,255,0.72);">Single outlet, nationwide rollout or a building facade — leave your details and our team will follow up after the show.</p>
+
+            <div style="margin-top:auto; display:flex; flex-direction:column; gap:16px;">
+              <div style="display:flex; align-items:center; gap:16px;">
+                <span style="width:40px; height:40px; flex:none; border:1px solid rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; color:#DE2027; font-family:'JetBrains Mono',monospace; font-size:14px;">@</span>
+                <div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.4);">Email</div>
+                  <div style="font-size:17px; color:rgba(255,255,255,0.9);">marketing@redpoint.com.my</div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; gap:16px;">
+                <span style="width:40px; height:40px; flex:none; border:1px solid rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; color:#DE2027; font-family:'JetBrains Mono',monospace; font-size:13px;">☏</span>
+                <div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.4);">Phone · Web</div>
+                  <div style="font-size:17px; color:rgba(255,255,255,0.9);">604-507 6839 &nbsp;·&nbsp; redpoint.com.my</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORM PANEL -->
+          <div style="width:680px; flex:none; background:#0E0E10; border-left:1px solid rgba(255,255,255,0.10); padding:80px 64px; display:flex; flex-direction:column; justify-content:center;">
+            <div style="text-align:center;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#DE2027;">Enquiry</div>
+              <h3 style="margin-top:12px; font-weight:700; font-size:30px; letter-spacing:-0.01em;">Scan to leave your details</h3>
+              <div style="margin-top:32px; background:#fff; padding:24px; display:inline-block;">
+                <img src="assets/qr-lead-form.png" alt="Scan to open the enquiry form" style="width:280px; height:280px; display:block;">
+              </div>
+              <p style="margin-top:28px; font-weight:300; font-size:17px; line-height:1.6; color:rgba(255,255,255,0.65);">Point your phone camera at the code to open our enquiry form. Fill it in and our team will follow up after the show.</p>
+            </div>
+          </div>
+        </section>
+      </sc-if>
+
+    </main>
+  </div>
+
+  <!-- ============ ATTRACT OVERLAY ============ -->
+  <sc-if value="{{ attract }}" hint-placeholder-val="{{ true }}">
+    <div onClick="{{ dismiss }}" style="position:absolute; inset:0; z-index:50; cursor:pointer; overflow:hidden; background:#000;">
+      <img src="assets/redpoint-flagship-night.png" style="{{ aStyle0 }}">
+      <img src="assets/img-fabrication-detail.png" style="{{ aStyle1 }}">
+      <img src="assets/img-team-workshop.png" style="{{ aStyle2 }}">
+      <img src="assets/img-hq-redpoint-daytime.png" style="{{ aStyle3 }}">
+      <div style="position:absolute; inset:0; background:linear-gradient(110deg,rgba(8,8,9,0.92) 30%,rgba(8,8,9,0.55) 65%,rgba(8,8,9,0.30));"></div>
+
+      <div style="position:absolute; inset:0; padding:80px; display:flex; flex-direction:column;">
+        <img src="assets/logo-redpoint-red-trim.png" alt="Red Point" style="height:56px; width:auto; align-self:flex-start;">
+        <div style="margin-top:auto; max-width:1180px;">
+          <div style="display:inline-flex; align-items:center; gap:12px;">
+            <span style="width:11px; height:11px; border-radius:50%; background:#DE2027;"></span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:16px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.8);">Signage &amp; Facade · LED Display Solutions</span>
+          </div>
+          <h1 style="margin-top:32px; font-weight:900; font-size:150px; line-height:0.9; letter-spacing:-0.035em;">Making brands<br>seen<span style="color:#DE2027;">.</span></h1>
+          <p style="margin-top:36px; max-width:760px; font-weight:300; font-size:28px; line-height:1.5; color:rgba(255,255,255,0.78);">Brand impressions through signage, facade and LED display solutions — at industrial scale, for over 40 years.</p>
+        </div>
+        <div style="margin-top:64px; display:flex; align-items:center; gap:16px;">
+          <span style="font-family:'Avenir LT Pro'; font-weight:700; font-size:20px; letter-spacing:0.04em; color:#fff;">Touch anywhere to explore</span>
+          <span style="font-size:26px; color:#DE2027; animation:rpArrow 1.4s ease-in-out infinite;">→</span>
+        </div>
+      </div>
+
+      <div style="position:absolute; right:80px; bottom:80px; text-align:right;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.5);">Archidex 2026 · MITEC KL</div>
+        <div style="margin-top:8px; font-weight:900; font-size:34px; letter-spacing:-0.01em; color:#fff;">BOOTH 3G247A</div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080}}">
+class Component extends DCLogic {
+  state = {
+    attract: true,
+    attractIdx: 0,
+    section: 'home',
+    service: 'signage',
+    filter: 'all',
+    form: { name:'', company:'', email:'', phone:'', type:'', message:'' },
+    submitted: false,
+  };
+
+  attractCount = 4;
+
+  componentDidMount() {
+    this._cycle = setInterval(() => {
+      if (this.state.attract) this.setState(s => ({ attractIdx: (s.attractIdx + 1) % this.attractCount }));
+    }, 4200);
+    this._armIdle();
+  }
+  componentWillUnmount() { clearInterval(this._cycle); clearTimeout(this._idle); }
+
+  _armIdle() {
+    clearTimeout(this._idle);
+    this._idle = setTimeout(() => this.setState({ attract: true, attractIdx: 0 }), 90000);
+  }
+  _touch() { this._armIdle(); }
+
+  go(section) { this.setState({ attract:false, section }); this._touch(); }
+  dismiss = () => { this.setState({ attract:false }); this._touch(); };
+  setService(id) { this.setState({ service:id }); this._touch(); }
+  setFilter(t) { this.setState({ filter:t }); this._touch(); }
+
+  field(k) { return (e) => { const v = e.target.value; this.setState(s => ({ form: { ...s.form, [k]: v } })); this._touch(); }; }
+  submit = () => { this.setState({ submitted:true }); this._touch(); };
+  resetForm = () => { this.setState({ submitted:false, form:{ name:'',company:'',email:'',phone:'',type:'',message:'' } }); this._touch(); };
+
+  navItemStyle(active) {
+    return "display:flex; align-items:center; gap:18px; width:100%; text-align:left; background:" + (active?"rgba(255,255,255,0.05)":"transparent") +
+      "; border:0; border-left:3px solid " + (active?"#DE2027":"transparent") +
+      "; padding:17px 33px; cursor:pointer; font-family:'Avenir LT Pro'; transition:all 200ms cubic-bezier(0.22,1,0.36,1);";
+  }
+  navNumStyle(active) {
+    return "font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; color:" + (active?"#DE2027":"rgba(255,255,255,0.3)") + ";";
+  }
+  navLabelStyle(active) {
+    return "font-weight:" + (active?"700":"500") + "; font-size:19px; letter-spacing:-0.01em; color:" + (active?"#fff":"rgba(255,255,255,0.55)") + ";";
+  }
+  tabStyle(active) {
+    return "background:" + (active?"#DE2027":"transparent") + "; border:1px solid " + (active?"#DE2027":"rgba(255,255,255,0.2)") +
+      "; color:#fff; font-family:'Avenir LT Pro'; font-weight:" + (active?"700":"500") + "; font-size:15px; letter-spacing:0.03em; text-transform:uppercase; padding:13px 24px; cursor:pointer; transition:all 150ms ease;";
+  }
+  filterStyle(active) {
+    return "background:" + (active?"#DE2027":"transparent") + "; border:1px solid " + (active?"#DE2027":"rgba(255,255,255,0.2)") +
+      "; color:" + (active?"#fff":"rgba(255,255,255,0.7)") + "; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 18px; cursor:pointer; transition:all 150ms ease;";
+  }
+  aStyle(i) {
+    const on = this.state.attractIdx === i;
+    return "position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:" + (on?"1":"0") +
+      "; transition:opacity 1.3s ease; animation:rpKen 9s ease-out alternate infinite;";
+  }
+
+  renderVals() {
+    const s = this.state;
+    const nav = [
+      { id:'home', num:'01', label:'Overview' },
+      { id:'services', num:'02', label:'Services' },
+      { id:'projects', num:'03', label:'Projects' },
+      { id:'why', num:'04', label:'Why Red Point' },
+      { id:'contact', num:'05', label:'Enquire' },
+    ];
+    const navItems = nav.map(n => ({
+      num:n.num, label:n.label,
+      onClick: () => this.go(n.id),
+      style: this.navItemStyle(s.section === n.id),
+      numStyle: this.navNumStyle(s.section === n.id),
+      labelStyle: this.navLabelStyle(s.section === n.id),
+    }));
+
+    const services = {
+      signage: { title:'Signage & Facade', tag:'In-house fabrication', img:'assets/img-fabrication-detail.png',
+        lead:'From channel letters to full building identity. We design, fabricate and install indoor and outdoor signage and architectural facades at industrial scale.',
+        bullets:['Channel letters & 3D built-up signage','Pylon, monument & totem signs','ACP & stainless steel facade systems','Building identity & crown signage','Wayfinding & directional systems','Full engineering, fabrication & install'] },
+      led: { title:'LED Display Solutions', tag:'Engineered for switch-on', img:'assets/redpoint-flagship-night.png',
+        lead:'High-impact LED and digital display systems engineered for the Malaysian climate — built to make your brand show up at night and in any weather.',
+        bullets:['Outdoor LED billboards & facade displays','Indoor LED video walls','Architectural & facade lighting','Programmable RGB systems','Content & control integration','Maintenance & after-sales support'] },
+      retail: { title:'Retail & Turnkey', tag:'With M Creative', img:'assets/img-team-workshop.png',
+        lead:'Brand environments, kiosks and multi-outlet rollouts — delivered end to end with our sister company M Creative under one accountability.',
+        bullets:['Branded kiosks & in-store displays','Multi-outlet rollout supply & install','POS & promotional fixtures','Mall pop-ups & exhibition structures','Brand consistency across sites','Single point of accountability'] },
+    };
+    const serviceOrder = [['signage','Signage & Facade'],['led','LED Display'],['retail','Retail & Turnkey']];
+    const serviceTabs = serviceOrder.map(([id,label]) => ({ label, onClick:()=>this.setService(id), style:this.tabStyle(s.service===id) }));
+
+    const projects = [
+      { code:'PRJ-014', tag:'Facade Lighting', type:'facade', img:'assets/proj-led-facade-highrise-quaywest.jpeg', name:'High-Rise LED Facade Lighting', detail:'Full-height architectural LED facade lighting for a Klang Valley high-rise, switch-on ready.', spec:'Delivered on schedule' },
+      { code:'PRJ-022', tag:'Facade Lighting', type:'facade', img:'assets/redpoint-flagship-night.png', name:'Dynamic RGB Facade Lighting', detail:'Programmable RGB facade lighting system, engineered for nightly switch-on shows.', spec:'RGB · programmable' },
+      { code:'PRJ-031', tag:'Signage', type:'signage', img:'assets/img-team-workshop.png', name:'National F&B Rollout', detail:'Signage & display package for 40 outlets across Peninsular Malaysia.', spec:'40 outlets · multi-state' },
+      { code:'PRJ-038', tag:'Signage', type:'signage', img:'assets/proj-commercial-signage-recafi.jpg', name:'Commercial Facade Signage', detail:'Large-format channel-letter facade signage for a commercial retail showroom.', spec:'6-week programme' },
+      { code:'PRJ-045', tag:'LED Display', type:'led', img:'assets/proj-led-lobby-linxiangxiong.jpg', name:'Lin Xiang Xiong Art Gallery Lobby', detail:'Indoor LED screen installation for the gallery lobby, built for exhibition-grade playback.', spec:'Indoor LED · gallery install' },
+      { code:'PRJ-052', tag:'Signage', type:'signage', img:'assets/proj-restaurant-facade-elitehouse.jpg', name:'Restaurant Facade Signage', detail:'Illuminated channel-letter facade signage & decorative screen for a restaurant frontage.', spec:'Klang Valley · F&B' },
+    ];
+    const filters = [['facade','Facade Lighting'],['signage','Signage'],['led','LED Display']];
+    const filterTabs = filters.map(([id,label]) => ({ label, onClick:()=>this.setFilter(id), style:this.filterStyle(s.filter===id) }));
+    const filteredProjects = projects.filter(p => s.filter==='all' || p.type===s.filter);
+
+    const pillars = [
+      { num:'01', title:'40+ years. No learning curve.', body:"Fabricating and installing at industrial scale since 1983. Whatever your project throws at us, we've solved it before." },
+      { num:'02', title:'Turnkey. One accountability.', body:'Design, fabrication, installation and project management under one roof. No finger-pointing between vendors.' },
+      { num:'03', title:'In-house fabrication at scale.', body:'Plasma cutting, fiber laser, CNC routing, spray booth and a skylift fleet — all ours, all on site.' },
+      { num:'04', title:'Nationwide install reach.', body:'Our crews cover Langkawi to the East Coast. Multi-outlet rollouts across states are routine, not exceptions.' },
+    ];
+
+    const stats = [
+      { num:'40+', label:'Years in signcraft' },
+      { num:'500+', label:'Projects delivered' },
+      { num:'4', label:'In-house capabilities' },
+      { num:'MY', label:'Nationwide reach' },
+    ];
+
+    return {
+      navItems, stats, serviceTabs, filterTabs, filteredProjects, pillars,
+      svc: services[s.service],
+      isHome: s.section==='home', isServices: s.section==='services', isProjects: s.section==='projects',
+      isWhy: s.section==='why', isContact: s.section==='contact',
+      attract: s.attract,
+      aStyle0:this.aStyle(0), aStyle1:this.aStyle(1), aStyle2:this.aStyle(2), aStyle3:this.aStyle(3),
+      dismiss:this.dismiss,
+    };
+  }
+}
+</script>
+</body>
+</html>

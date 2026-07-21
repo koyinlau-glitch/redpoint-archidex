@@ -1,0 +1,24 @@
+/* preview/card.css — base styles for design-system specimen cards */
+@import url('../colors_and_type.css');
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg-1); font-family: var(--font-text); }
+
+.card {
+  width: 700px;
+  padding: 24px;
+  background: var(--bg);
+  display: block;
+}
+.card.is-dark { background: var(--black); color: var(--fg-on-dark); }
+.card .row { display: flex; align-items: center; gap: 16px; }
+.card .col { display: flex; flex-direction: column; gap: 8px; }
+.card .grid { display: grid; gap: 12px; }
+.card .label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--fg-3);
+  text-transform: uppercase;
+}
+.card.is-dark .label { color: var(--fg-on-dark-muted); }

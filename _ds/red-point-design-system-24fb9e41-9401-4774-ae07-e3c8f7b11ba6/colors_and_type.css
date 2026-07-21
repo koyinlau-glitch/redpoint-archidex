@@ -1,0 +1,393 @@
+/* ============================================================
+   Red Point Design System — colors_and_type.css
+   Single source of truth for tokens. Import in every artifact.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ============================================================
+   AVENIR LT PRO — the official brand face
+   Self-hosted from fonts/. Covers display + body in one family.
+   ============================================================ */
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProLight.otf') format('opentype'); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProLightOblique.otf') format('opentype'); font-weight:300; font-style:italic; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProBook.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProBookOblique.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProRoman.otf') format('opentype'); font-weight:450; font-style:normal; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProOblique.otf') format('opentype'); font-weight:450; font-style:italic; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProMedium.otf') format('opentype'); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProMediumOblique.otf') format('opentype'); font-weight:500; font-style:italic; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProHeavy.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProHeavyOblique.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProBlack.otf') format('opentype'); font-weight:900; font-style:normal; font-display:swap; }
+@font-face { font-family:'Avenir LT Pro'; src:url('fonts/AvenirLTProBlackOblique.otf') format('opentype'); font-weight:900; font-style:italic; font-display:swap; }
+
+:root {
+  /* ----------------------------------------------------------
+     COLORS — Brand
+     ---------------------------------------------------------- */
+
+  /* Brand red — sampled from the master logo. The accent. */
+  --red:            #DE2027;
+  --red-700:        #B81A20;  /* Hover / pressed */
+  --red-800:        #8E1218;  /* Deep — print equivalents */
+  --red-100:        #FBE7E8;  /* Tints, subtle backgrounds (use sparingly) */
+
+  /* Sphere red gradient — for the logomark only.
+     Do not pull these into general UI. */
+  --sphere-red-light: #E55544;
+  --sphere-red-mid:   #D92026;
+  --sphere-red-deep:  #752012;
+
+  /* Chrome / silver — sister mark sphere */
+  --silver-100:     #F2F3F4;
+  --silver-200:     #E4E5E6;
+  --silver-400:     #CDCED1;
+  --silver-600:     #9DA0A6;
+
+  /* ----------------------------------------------------------
+     COLORS — Neutrals
+     Industrial warm-cool grays. The bulk of the system.
+     ---------------------------------------------------------- */
+  --black:          #0B0B0C;   /* Surface — primary dark */
+  --black-true:     #000000;
+  --ink-900:        #18181A;   /* Body text on light, max ink */
+  --ink-800:        #2A2A2D;
+  --ink-700:        #404045;
+  --ink-600:        #5B5B61;   /* Body text default */
+  --ink-500:        #7B7C82;   /* Muted text */
+  --ink-400:        #A1A2A8;
+  --ink-300:        #C7C8CC;
+  --ink-200:        #E2E3E5;   /* Borders default on light */
+  --ink-100:        #EFF0F1;
+  --ink-50:         #F5F5F4;   /* Off-white surface */
+
+  --white:          #FFFFFF;
+
+  /* On dark — for use against --black */
+  --fg-on-dark:        rgba(255,255,255,0.92);
+  --fg-on-dark-muted:  rgba(255,255,255,0.60);
+  --fg-on-dark-faint:  rgba(255,255,255,0.32);
+  --border-on-dark:    rgba(255,255,255,0.12);
+  --border-on-dark-strong: rgba(255,255,255,0.24);
+
+  /* ----------------------------------------------------------
+     COLORS — Semantic (used quietly — this is a B2B craft brand)
+     ---------------------------------------------------------- */
+  --success:        #1F7A4A;
+  --warning:        #B8761A;
+  --danger:         var(--red-700);
+  --info:           #2A4C8B;
+
+  /* ----------------------------------------------------------
+     SEMANTIC TOKENS — colors
+     Use these in components, not the raw scales.
+     ---------------------------------------------------------- */
+  --bg:             var(--white);
+  --bg-subtle:      var(--ink-50);
+  --bg-strong:      var(--ink-100);
+  --bg-inverse:     var(--black);
+
+  --fg:             var(--ink-900);
+  --fg-1:           var(--ink-900);   /* Primary text */
+  --fg-2:           var(--ink-600);   /* Secondary / body */
+  --fg-3:           var(--ink-500);   /* Tertiary / muted */
+  --fg-faint:       var(--ink-400);
+  --fg-inverse:     var(--white);
+
+  --accent:         var(--red);
+  --accent-hover:   var(--red-700);
+  --accent-press:   var(--red-800);
+
+  --border:         var(--ink-200);
+  --border-subtle:  var(--ink-100);
+  --border-strong:  var(--ink-300);
+  --border-ink:     var(--ink-900);   /* Hard editorial rule */
+
+  /* ----------------------------------------------------------
+     TYPE — Font families
+     Avenir LT Pro is the official brand face for both display
+     and body. One family, six weights — keeps the system tight.
+     ---------------------------------------------------------- */
+  --font-display:   'Avenir LT Pro', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --font-text:      'Avenir LT Pro', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --font-mono:      'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Weights — Avenir LT Pro */
+  --weight-display-regular:  500;   /* Medium */
+  --weight-display-bold:     700;   /* Heavy */
+  --weight-display-black:    900;   /* Black */
+
+  --weight-text-light:       300;   /* Light — large body, hero lead */
+  --weight-text-regular:     400;   /* Book — default body */
+  --weight-text-medium:      500;   /* Medium — UI emphasis */
+  --weight-text-bold:        700;   /* Heavy — strong inline */
+
+  /* ----------------------------------------------------------
+     TYPE — Scale (fluid where it matters)
+     ---------------------------------------------------------- */
+  --fs-xs:    12px;   /* eyebrow, micro labels */
+  --fs-sm:    13px;   /* UI captions */
+  --fs-base:  15px;   /* default body */
+  --fs-md:    17px;   /* large body / lead */
+  --fs-lg:    20px;
+  --fs-xl:    24px;
+  --fs-2xl:   32px;
+  --fs-3xl:   44px;
+  --fs-4xl:   60px;
+  --fs-5xl:   84px;
+  --fs-6xl:   112px;
+
+  --lh-tight:   1.05;
+  --lh-snug:    1.18;
+  --lh-normal:  1.45;
+  --lh-relaxed: 1.6;
+
+  --tracking-tight:   -0.02em;
+  --tracking-display: -0.025em;
+  --tracking-eyebrow: 0.14em;
+  --tracking-button:  0.04em;
+
+  /* ----------------------------------------------------------
+     SPACING — 4px base
+     ---------------------------------------------------------- */
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    24px;
+  --space-6:    32px;
+  --space-7:    48px;
+  --space-8:    64px;
+  --space-9:    96px;
+  --space-10:  128px;
+
+  /* ----------------------------------------------------------
+     RADII
+     ---------------------------------------------------------- */
+  --radius-0:    0;          /* Default — sharp, architectural */
+  --radius-1:    2px;        /* Inputs, chips */
+  --radius-pill: 9999px;     /* Eyebrow tags — echoes the logo dot */
+  --radius-full: 50%;        /* Circles — avatars, dots */
+
+  /* ----------------------------------------------------------
+     BORDERS
+     ---------------------------------------------------------- */
+  --border-w-1: 1px;
+  --border-w-2: 2px;
+
+  /* ----------------------------------------------------------
+     SHADOWS — minimal industrial elevation
+     ---------------------------------------------------------- */
+  --shadow-none: none;
+  --shadow-lift: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -8px rgb(0 0 0 / 0.08);
+  --shadow-deep: 0 2px 4px rgb(0 0 0 / 0.06), 0 16px 48px -12px rgb(0 0 0 / 0.16);
+  /* Optional LED glow — for photography only */
+  --shadow-led-red: 0 0 24px rgb(222 32 39 / 0.45), 0 0 60px rgb(222 32 39 / 0.20);
+
+  /* ----------------------------------------------------------
+     MOTION
+     ---------------------------------------------------------- */
+  --ease:          cubic-bezier(0.22, 1, 0.36, 1);  /* ease-out-quart */
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro:     150ms;
+  --dur-component: 250ms;
+  --dur-hero:      600ms;
+
+  /* ----------------------------------------------------------
+     LAYOUT
+     ---------------------------------------------------------- */
+  --container-max: 1280px;
+  --container-px:  32px;
+  --header-h:      72px;
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES
+   Use these classes directly; the variables above are the floor.
+   ============================================================ */
+
+html { font-family: var(--font-text); color: var(--fg-1); background: var(--bg); }
+body { font-family: var(--font-text); font-size: var(--fs-base); line-height: var(--lh-normal); color: var(--fg-1); -webkit-font-smoothing: antialiased; }
+
+/* DISPLAY — hero statements */
+.t-hero,
+.t-display-1 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display-black);
+  font-size: var(--fs-5xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  color: var(--fg-1);
+}
+.t-display-2 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display-black);
+  font-size: var(--fs-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+}
+.t-display-3 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display-black);
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* HEADINGS */
+.t-h1, h1 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display-bold);
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+.t-h2, h2 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display-bold);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+.t-h3, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: -0.01em;
+  color: var(--fg-1);
+}
+.t-h4, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+/* EYEBROW — small all-caps kicker */
+.t-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  line-height: 1;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+/* BODY */
+.t-lead, .lead {
+  font-family: var(--font-text);
+  font-weight: var(--weight-text-regular);
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+}
+.t-body, p {
+  font-family: var(--font-text);
+  font-weight: var(--weight-text-light);
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+}
+.t-caption {
+  font-family: var(--font-text);
+  font-weight: var(--weight-text-regular);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--fg-3);
+}
+
+/* MONO — specs, project numbers, dimensions */
+.t-mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-2);
+}
+.t-mono-lg {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-base);
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-1);
+}
+
+/* STAT / PROOF — big tabular numerals */
+.t-stat {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display-black);
+  font-size: var(--fs-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-1);
+}
+
+/* BUTTONS — label-only typography rules */
+.t-button {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tracking-button);
+  line-height: 1;
+}
+
+/* LINKS — default underline, no color change */
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--ink-300);
+  transition: text-decoration-color var(--dur-micro) var(--ease);
+}
+a:hover { text-decoration-color: var(--accent); }
+
+/* SELECTION */
+::selection { background: var(--red); color: var(--white); }
+
+/* ============================================================
+   THE RED DOT — the one piece of brand-specific iconography
+   ============================================================ */
+.brand-dot {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: 0.06em;
+  margin: 0 0.1em;
+}
+.brand-dot--lg { width: 12px; height: 12px; }
+.brand-dot--xl { width: 24px; height: 24px; }
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.surface-dark { background: var(--bg-inverse); color: var(--fg-on-dark); }
+.surface-dark .t-h1, .surface-dark .t-h2, .surface-dark .t-h3, .surface-dark .t-h4,
+.surface-dark h1, .surface-dark h2, .surface-dark h3, .surface-dark h4,
+.surface-dark .t-display-1, .surface-dark .t-display-2, .surface-dark .t-display-3, .surface-dark .t-hero, .surface-dark .t-stat { color: var(--white); }
+.surface-dark .t-eyebrow { color: var(--fg-on-dark-muted); }
+.surface-dark .t-body, .surface-dark p, .surface-dark .t-lead, .surface-dark .t-mono { color: var(--fg-on-dark-muted); }
+
+.kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--fg-3);
+}
+.kicker::before {
+  content: ""; display: inline-block;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+}
